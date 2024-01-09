@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:43 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/09 20:04:27 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/09 20:10:34 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,3 +101,5 @@ char	*getting_line(char *path)
 	check_map(res);
 	return (res);
 }
+
+/* verifier le error handling et ajouter le check pour les coins joueur et sortie */
