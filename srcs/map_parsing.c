@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:43 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/09 20:10:34 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/10 16:39:18 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,30 +75,88 @@ void	ft_err(char *error, void *ptr)
 	exit(0);
 }
 
-char	*getting_line(char *path)
+int	check_border_line(char *line, size_t length)
+{
+	size_t	i;
+
+	i = 0;
+	while (i <= length)
+	{
+		if (line[i] != WALL)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	map_charset(char c)
+{
+	if (c == WALL || c == SPACE || c == COIN || c == EXIT || c == PLAYER)
+		return (1);
+	// if (c == '\n')
+	// 	return (1);
+	return (0);
+}
+
+int	check_line(char *line, t_map map)
+{
+	size_t	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (!map_charset(line[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	map_error(t_map *map)
+{
+	if (map->coins < 1)
+		ft_err(MISSING_COIN, NULL);
+	if (map->exit < 1)
+		ft_err(MISSING_EXIT, NULL);
+	else if (map->exit > 1)
+		ft_err(DUPLICATE_EXIT, NULL);
+	if (map->player < 1)
+		ft_err(MISSING_SPAWN_POINT, NULL);
+	else if (map->player > 1)
+		ft_err(DUPLICATE_SPAWN_POINT, NULL);
+	ft_free(map->map, map->height);
+	
+}
+
+char	**check_map(char **map_text, t_map *map)
+{
+	if (map->coins < 1 || map->exit != 1 || map->player != 1)
+		map_error
+}
+
+char	*getting_line(char *path, t_map *map)
 {
 	char	*line;
 	char	*res;
 	int		fd;
-	size_t	length;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 1)
-		ft_err("Bad map path", NULL);
+		ft_err(, NULL);
 	res = get_next_line(fd);
-	length = (size_t)ft_safe_strlen(res);
+	map->length = (size_t)ft_safe_strlen(res);
+	map->height = 1;
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
+		if (map->height++ && line == NULL)
 			break;
-		if (ft_strlen(line) != length)
+		if (ft_strlen(line) != map->length)
 			return (free(res), ft_err("Map is not a rectangle", line), NULL);
 		res = ft_sep_join(res, line, "");
 		free(line);
 	}
-	// printf("%s", res);
-	check_map(res);
+	map->map = check_map(ft_split(res, '\n'), map);
 	return (res);
 }
 
