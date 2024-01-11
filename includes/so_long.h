@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/11 16:13:31 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/11 19:03:56 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
-	t_map	map;
+	t_map	*map;
 }	t_data;
 
 void	ft_err(char *error, void *ptr);
-char	*getting_line(char *path, t_map *map);
-char	**check_map(char **map_array, t_map *map);
+char	**getting_line(char *path, t_map *map);
+char	**check_map(char **map_array, t_map *map, char *res);
 char	*check_line(char *line, t_map *map);
+int		manage_window(void);
 
 #endif
