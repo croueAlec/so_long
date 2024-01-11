@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/11 19:03:56 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:23:09 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	ft_err(char *error, void *ptr);
 char	**getting_line(char *path, t_map *map);
 char	**check_map(char **map_array, t_map *map, char *res);
 char	*check_line(char *line, t_map *map);
-int		manage_window(void);
+int		manage_window(t_map *map);
 
 #endif
