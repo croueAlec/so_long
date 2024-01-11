@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/10 20:34:28 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/11 11:17:42 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "../libs/libft/libft.h"
+# include "../libs/minilibx-linux/mlx.h"
 
 # define WALL '1'
 # define SPACE '0'
 # define COIN 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
+
+# define TILE_SIZE 32
 
 # define BAD_MAP_PATH "Bad map path"
 # define MAP_NOT_RECT "Map is not a rectangle"
