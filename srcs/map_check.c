@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/10 20:36:57 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/11 16:06:10 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ char	**check_map(char **map_array, t_map *map)
 	map->player_y = y;
 	map->player_x = x;
 	printf("%zu %zu\n", map->player_x, map->player_y);
-	if (check_border(map_array, map))
-		
+	check_border(map_array, map);
 	return (map_array);
 }
 
