@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:12:10 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/10 20:14:02 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/11 19:18:49 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,30 @@ int	map_charset(char c)
 void	map_error(char *line, t_map *map)
 {
 	if (map->coins < 1)
+	{
+		free(map);
 		ft_err(MISSING_COIN, line);
+	}
 	if (map->exit < 1)
+	{
+		free(map);
 		ft_err(MISSING_EXIT, line);
+	}
 	else if (map->exit > 1)
+	{
+		free(map);
 		ft_err(DUPLICATE_EXIT, line);
+	}
 	if (map->player < 1)
+	{
+		free(map);
 		ft_err(MISSING_SPAWN_POINT, line);
+	}
 	else if (map->player > 1)
+	{
+		free(map);
 		ft_err(DUPLICATE_SPAWN_POINT, line);
+	}
 }
 
 char	*check_line(char *line, t_map *map)

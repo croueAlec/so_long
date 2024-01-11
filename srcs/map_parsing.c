@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:43 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/11 16:08:35 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/11 19:03:50 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_free_tab(char **tab, size_t j)
 	free(tab);
 }
 
-char	*getting_line(char *path, t_map *map)
+char	**getting_line(char *path, t_map *map)
 {
 	char	*line;
 	char	*res;
@@ -82,6 +82,6 @@ char	*getting_line(char *path, t_map *map)
 		free(line);
 	}
 	printf("%s", res);
-	map->map = check_map(ft_split(check_line(res, map), '\n'), map);
-	return (free(res), map->map);
+	map->map = check_map(ft_split(check_line(res, map), '\n'), map, res);
+	return (map->map);
 }
