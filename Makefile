@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/10 18:41:02 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/11 16:02:23 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,8 @@ INCLUDES := $(strip $(INCLUDES))
 define SRC :=
 	so_long.c
 	map_parsing.c
+	map_check.c
+	map_line_check.c
 endef
 SRC := $(strip $(SRC))
 
