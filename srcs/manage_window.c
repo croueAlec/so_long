@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 14:58:39 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 19:07:28 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ void	put_map(t_map *map, t_data data, void **assets)
 	y = 0;
 	while (y < map->height)
 	{
-		// printf("%s\n", map_array[y]);
 		x = 0;
 		while (x < map->length - 1)
 		{

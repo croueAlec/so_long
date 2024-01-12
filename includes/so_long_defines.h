@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 13:06:31 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 18:51:59 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 # define DEFAULT_TEXTURE_PATH "textures/default_texture.xpm"
 # define PLAYER_TEXTURE_PATH "textures/player.xpm"
 # define EXIT_TEXTURE_PATH "textures/exit.xpm"
-# define COIN_TEXTURE_PATH "textures/default_texture.xpm"
+# define COIN_TEXTURE_PATH "textures/coin.xpm"
 # define UPPER_LEFT_WALL_PATH "textures/upper_left_wall.xpm"
 # define LOWER_LEFT_WALL_PATH "textures/lower_left_wall.xpm"
 # define UPPER_RIGHT_WALL_PATH "textures/upper_right_wall.xpm"
