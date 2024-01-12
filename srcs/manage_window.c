@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/11 20:23:06 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 13:39:32 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,44 +52,13 @@ int	put_image(t_data data, void *mlx_img, size_t y_axis, size_t x_axis)
 	return (0);
 }
 
-void	**load_images(t_data data) // ne pas oublier de safe le load images
-{
-	size_t	i;
-	t_img	image;
-	void	**assets;
-	int		size;
-
-	i = 0;
-	assets = malloc((ASSETS) * sizeof(void *));
-	if(!assets)
-		return (NULL);
-	size = TILE_SIZE;
-	image = data.img;
-	image.addr = "textures/default_texture.xpm";
-	assets[0] = mlx_xpm_file_to_image(data.mlx_ptr, image.addr, &size, &size);
-	image.addr = "textures/wall.xpm";
-	assets[1] = mlx_xpm_file_to_image(data.mlx_ptr, image.addr, &size, &size);
-	image.addr = "textures/floor.xpm";
-	assets[2] = mlx_xpm_file_to_image(data.mlx_ptr, image.addr, &size, &size);
-	image.addr = "textures/exit.xpm";
-	assets[3] = mlx_xpm_file_to_image(data.mlx_ptr, image.addr, &size, &size);
-	image.addr = "textures/player.xpm";
-	assets[4] = mlx_xpm_file_to_image(data.mlx_ptr, image.addr, &size, &size);
-	// put_image(data, assets[0], 0, 0);	put_image(data, assets[1], 0, 1);	put_image(data, assets[1], 0, 2);
-	// put_image(data, assets[2], 1, 0);	put_image(data, assets[2], 1, 1);	put_image(data, assets[2], 1, 2);
-	// put_image(data, assets[2], 2, 0);	put_image(data, assets[2], 2, 1);	put_image(data, assets[2], 2, 2);
-	// put_image(data, assets[4], 2, 0);
-	// put_image(data, assets[3], 2, 2);
-	return (assets);
-}
-
-void	clear_images(t_data data, void **assets)
+void	clear_images(t_data data, void **assets, size_t size)
 {
 	size_t	i;
 
 	i = 0;
 	mlx_clear_window(data.mlx_ptr, data.win_ptr);
-	while (i < ASSETS)
+	while (i < size)
 	{
 		mlx_destroy_image(data.mlx_ptr, assets[i]);
 		i++;
@@ -99,26 +68,67 @@ void	clear_images(t_data data, void **assets)
 
 int	ft_end(t_data data, void **assets)
 {
-	clear_images(data, assets);
+	clear_images(data, assets, ASSETS);
 	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 	return (0);
 }
 
+void	*select_wall(void **assets, char c)
+{
+	if (c == U_WALL)
+		return (assets[UPPER_WALL]);
+	if (c == D_WALL)
+		return (assets[LOWER_WALL]);
+	if (c == L_WALL)
+		return (assets[LEFT_WALL]);
+	if (c == R_WALL)
+		return (assets[RIGHT_WALL]);
+	if (c == A_CORNER)
+		return (assets[UPPER_LEFT_WALL]);
+	if (c == B_CORNER)
+		return (assets[UPPER_RIGHT_WALL]);
+	if (c == C_CORNER)
+		return (assets[LOWER_LEFT_WALL]);
+	if (c == D_CORNER)
+		return (assets[LOWER_RIGHT_WALL]);
+	return (assets[DEFAULT_TEXTURE]);
+}
+
+int	ft_fake_rand(void)
+{
+	int		fd;
+	char	buf[1];
+
+	fd = open("/dev/random", O_RDONLY);
+	if (fd < 0 || read(fd, buf, 1) < 0)
+		return ((void)close(fd), -1);
+	close(fd);
+	return (buf[0]);
+}
+
 void	*select_image(void **assets, char c)
 {
 	if (c == COIN)
-		return (assets[0]);
+		return (assets[COIN_TEXTURE]);
 	if (c == WALL)
-		return (assets[1]);
+		return (assets[LONE_WALL]);
 	if (c == SPACE)
-		return (assets[2]);
+		return (assets[TILE]);
 	if (c == EXIT)
-		return (assets[3]);
+		return (assets[EXIT_TEXTURE]);
 	if (c == PLAYER)
-		return (assets[4]);
-	return (assets[0]);
+		return (assets[PLAYER_TEXTURE]);
+	if (c == U_WALL || c == D_WALL || c == L_WALL || c == R_WALL)
+		return (select_wall(assets, c));
+	if (c == A_CORNER || c == B_CORNER || c == C_CORNER || c == D_CORNER)
+		return (select_wall(assets, c));
+	if (c == TILE && (ft_fake_rand() % 3 == 0))
+		return (assets[TILE_VARIANT]);
+	else if (c == TILE)
+		return (assets[TILE]);
+	return (assets[DEFAULT_TEXTURE]);
 }
 
 void	put_map(t_map *map, t_data data, void **assets)
@@ -131,8 +141,9 @@ void	put_map(t_map *map, t_data data, void **assets)
 	y = 0;
 	while (y < map->height)
 	{
+		printf("%s\n", map_array[y]);
 		x = 0;
-		while (x < map->length - 2)
+		while (x < map->length - 1)
 		{
 			put_image(data, select_image(assets, map_array[y][x]), y, x);
 			x++;
@@ -152,7 +163,9 @@ int	manage_window(t_map *map) // gerer les tailles max de cartes
 	data.win_ptr = mlx_new_window(data.mlx_ptr, MAX_WIDTH * TILE_SIZE, MAX_HEIGHT * TILE_SIZE, "so_long");
 	if (!data.win_ptr)
 		return (free(data.win_ptr), 0);
-	assets = load_images(data);
+	assets = load_assets(data);
+	if (!assets)
+		return (ft_end(data, assets), 0);
 	put_map(map, data, assets);
 	// mlx_hook(data.win_ptr, 3, 1L<<1, ft_close, &data);
 	mlx_key_hook(data.win_ptr, ft_close, &data);

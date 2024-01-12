@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/11 19:04:04 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 13:46:39 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-int	check_border_line(char *line, size_t length)
+int	check_border_line(char *line, size_t length, char wall)
 {
 	size_t	i;
 
@@ -25,6 +25,19 @@ int	check_border_line(char *line, size_t length)
 	{
 		if (line[i] != WALL)
 			return (0);
+		line[i] = wall;
+		if (i == 0)
+		{
+			line[i] = C_CORNER;
+			if (wall == U_WALL)
+				line[i] = A_CORNER;
+		}
+		if (i == length - 2)
+		{
+			line[i] = D_CORNER;
+			if (wall == U_WALL)
+				line[i] = B_CORNER;
+		}
 		i++;
 	}
 	return (1);
@@ -34,13 +47,15 @@ int	check_border_column(char **map_array, t_map *map)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < map->height)
+	i = 1;
+	while (i < map->height - 1)
 	{
 		printf("%s\n", map_array[i]);
 		printf("%c\t%c\n", map_array[i][0], map_array[i][map->length - 2]);
 		if (map_array[i][0] != WALL || map_array[i][map->length - 2] != WALL)
 			return (0);
+		map_array[i][0] = L_WALL;
+		map_array[i][map->length - 2] = R_WALL;
 		i++;
 	}
 	return (1);
@@ -48,9 +63,9 @@ int	check_border_column(char **map_array, t_map *map)
 
 int check_border(char **map_array, t_map *map)
 {
-	if (!check_border_line(map_array[0], map->length))
+	if (!check_border_line(map_array[0], map->length, U_WALL))
 		return (ft_free(map_array, map->height), ft_err(BORDER_ERROR, map), 0);
-	if (!check_border_line(map_array[map->height - 1], map->length))
+	if (!check_border_line(map_array[map->height - 1], map->length, D_WALL))
 		return (ft_free(map_array, map->height), ft_err(BORDER_ERROR, map), 0);
 	if (!check_border_column(map_array, map))
 		return (ft_free(map_array, map->height), ft_err(BORDER_ERROR, map), 0);

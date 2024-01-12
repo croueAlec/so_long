@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 12:13:18 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 13:06:31 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # define PLAYER 'P'
 # define MAX_WIDTH 30
 # define MAX_HEIGHT 16
+# define U_WALL 'U'
+# define D_WALL 'D'
+# define L_WALL 'L'
+# define R_WALL 'R'
+# define A_CORNER 'a'
+# define B_CORNER 'b'
+# define C_CORNER 'c'
+# define D_CORNER 'd'
 
 /* Textures */
 # define TILE_SIZE 32
