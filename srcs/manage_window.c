@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 13:39:32 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 14:58:39 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	clear_images(t_data data, void **assets, size_t size)
 
 	i = 0;
 	mlx_clear_window(data.mlx_ptr, data.win_ptr);
-	while (i < size)
+	while (i <= size)
 	{
 		mlx_destroy_image(data.mlx_ptr, assets[i]);
 		i++;
@@ -110,12 +110,12 @@ int	ft_fake_rand(void)
 
 void	*select_image(void **assets, char c)
 {
+	int	i;
+
 	if (c == COIN)
 		return (assets[COIN_TEXTURE]);
 	if (c == WALL)
 		return (assets[LONE_WALL]);
-	if (c == SPACE)
-		return (assets[TILE]);
 	if (c == EXIT)
 		return (assets[EXIT_TEXTURE]);
 	if (c == PLAYER)
@@ -124,9 +124,10 @@ void	*select_image(void **assets, char c)
 		return (select_wall(assets, c));
 	if (c == A_CORNER || c == B_CORNER || c == C_CORNER || c == D_CORNER)
 		return (select_wall(assets, c));
-	if (c == TILE && (ft_fake_rand() % 3 == 0))
+	i = ft_fake_rand();
+	if (c == SPACE && (i % 5 == 0))
 		return (assets[TILE_VARIANT]);
-	else if (c == TILE)
+	else if (c == SPACE)
 		return (assets[TILE]);
 	return (assets[DEFAULT_TEXTURE]);
 }
@@ -141,7 +142,7 @@ void	put_map(t_map *map, t_data data, void **assets)
 	y = 0;
 	while (y < map->height)
 	{
-		printf("%s\n", map_array[y]);
+		// printf("%s\n", map_array[y]);
 		x = 0;
 		while (x < map->length - 1)
 		{

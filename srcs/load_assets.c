@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:44:32 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 12:54:40 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 15:02:20 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	**load_assets(t_data data)
 	t_img	image;
 	void	**assets;
 
-	assets = malloc((ASSETS) * sizeof(void *));
+	assets = malloc((ASSETS + 1) * sizeof(void *));
 	if(!assets)
 		return (NULL);
 	image = data.img;

@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 13:46:39 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/12 14:59:11 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	check_border_column(char **map_array, t_map *map)
 	i = 1;
 	while (i < map->height - 1)
 	{
-		printf("%s\n", map_array[i]);
-		printf("%c\t%c\n", map_array[i][0], map_array[i][map->length - 2]);
+		// printf("%s\n", map_array[i]);
+		// printf("%c\t%c\n", map_array[i][0], map_array[i][map->length - 2]);
 		if (map_array[i][0] != WALL || map_array[i][map->length - 2] != WALL)
 			return (0);
 		map_array[i][0] = L_WALL;
@@ -94,7 +94,7 @@ char	**check_map(char **map_array, t_map *map, char *res)
 	}
 	map->player_y = y;
 	map->player_x = x;
-	printf("%zu %zu\n", map->player_x, map->player_y);
+	// printf("%zu %zu\n", map->player_x, map->player_y);
 	check_border(map_array, map);
 	return (map_array);
 }
