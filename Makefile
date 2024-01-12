@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/11 18:13:31 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/12 12:54:14 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ define SRC :=
 	map_check.c
 	map_line_check.c
 	manage_window.c
+	load_assets.c
 endef
 SRC := $(strip $(SRC))
 
