@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 19:07:28 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 11:52:17 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,32 +142,48 @@ void	put_map(t_map *map, t_data data, void **assets)
 	y = 0;
 	while (y < map->height)
 	{
+		// printf("%s\n", map->map[y]);
 		x = 0;
 		while (x < map->length - 1)
 		{
-			put_image(data, select_image(assets, map_array[y][x]), y, x);
+			put_image(data, select_image(assets, map_array[y][x]), y + 1, x + 1);
 			x++;
 		}
 		y++;
 	}
 }
 
-int	manage_window(t_map *map) // gerer les tailles max de cartes
+int	salut(t_data *data)
+{
+	mlx_loop_end(data->mlx_ptr);
+	return (0);
+}
+
+int	manage_window(t_map *map)
 {
 	t_data	data;
 	void	**assets;
+	size_t	width;
+	size_t	height;
 
+	width = (map->length + 1) * TILE_SIZE;
+	height = (map->height + 2) * TILE_SIZE;
+	if (map->height > MAX_HEIGHT || map->length > MAX_WIDTH)
+		return (ft_free(map->map, map->height), ft_err(MAP_TOO_BIG, map), 0);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
-		return (0);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, MAX_WIDTH * TILE_SIZE, MAX_HEIGHT * TILE_SIZE, "so_long");
+		return (ft_free(map->map, map->height), ft_err(MLX_FAIL, map), 0);
+	data.win_ptr = mlx_new_window(data.mlx_ptr, width, height, "so_long");
 	if (!data.win_ptr)
-		return (free(data.win_ptr), 0);
+	{
+		mlx_destroy_display(data.mlx_ptr);
+		return (free(data.mlx_ptr), perror(WIN_FAIL), 0);
+	}
 	assets = load_assets(data);
 	if (!assets)
-		return (ft_end(data, assets), 0);
+		return (ft_end(data, assets), perror(ASSET_FAIL), 0);
 	put_map(map, data, assets);
-	// mlx_hook(data.win_ptr, 3, 1L<<1, ft_close, &data);
+	mlx_hook(data.win_ptr, 17, 0, mlx_loop_end, data.mlx_ptr);
 	mlx_key_hook(data.win_ptr, ft_close, &data);
 	mlx_loop(data.mlx_ptr);
 	return (ft_end(data, assets), 0);
