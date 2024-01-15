@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:43 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 16:00:01 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 18:31:27 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_err(char *error, void *ptr)
 {
 	if (ptr)
 		free(ptr);
-	perror(error);
+	ft_putstr_fd(error, 2);
 	exit(0);
 }
 

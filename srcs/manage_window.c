@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 17:38:39 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 19:16:05 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,7 @@ void	*init_window(t_data data)
 	if (!win_ptr)
 	{
 		mlx_destroy_display(data.mlx_ptr);
-		return (free(data.mlx_ptr), perror(WIN_FAIL), NULL);
+		return (free(data.mlx_ptr), ft_putstr_fd(WIN_FAIL, 2), NULL);
 	}
 	return (win_ptr);
 }
@@ -259,7 +259,7 @@ int	manage_window(t_map *map)
 		return (0);
 	assets = load_assets(data);
 	if (!assets)
-		return (ft_end(data, assets), perror(ASSET_FAIL), 0);
+		return (ft_end(data, assets), ft_putstr_fd(ASSET_FAIL, 2), 0);
 	put_map(map, data, assets);
 	data.assets = assets;
 	mlx_hook(data.win_ptr, 17, 0, mlx_loop_end, data.mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 17:38:55 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 18:11:47 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@
 # define DUPLICATE_SPAWN_POINT "Too many player spawn points"
 # define WRONG_MAP_CHAR "Unrecognized character in map file"
 # define BORDER_ERROR "Map is not completely closed"
-# define WIN_MSG "You win !"
+# define WIN_MSG "You win ! Thanks for playing"
 
 # define ESCAPE 65307
 # define UP 'w'

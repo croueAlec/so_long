@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:08 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 16:15:55 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 18:31:47 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	if (!map)
 		return (0);
 	if (argc == 1)
-		return (perror("Missing map path"), 0);
+		return (ft_putstr_fd(BAD_MAP_PATH, 2), 0);
 	while (++i < argc)
 		getting_line(argv[i], map);
 	manage_window(map);
