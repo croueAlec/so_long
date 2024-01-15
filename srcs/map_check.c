@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 19:35:57 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:01:20 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int	check_border_column(char **map_array, t_map *map)
 	i = 1;
 	while (i < map->height - 1)
 	{
-		// printf("%s\n", map_array[i]);
-		// printf("%c\t%c\n", map_array[i][0], map_array[i][map->length - 2]);
 		if (map_array[i][0] != WALL || map_array[i][map->length - 2] != WALL)
 			return (0);
 		map_array[i][0] = L_WALL;
@@ -61,7 +59,7 @@ int	check_border_column(char **map_array, t_map *map)
 	return (1);
 }
 
-int check_border(char **map_array, t_map *map)
+int	check_border(char **map_array, t_map *map)
 {
 	if (!check_border_line(map_array[0], map->length, U_WALL))
 		return (ft_free(map_array, map->height), ft_err(BORDER_ERROR, map), 0);
@@ -85,18 +83,18 @@ char	**check_map(char **map_array, t_map *map, char *res)
 		while (x < map->length - 1)
 		{
 			if (map_array[y][x] == PLAYER)
-				break;
+				break ;
 			x++;
 		}
 		if (map_array[y][x] == PLAYER)
-			break;
+			break ;
 		y++;
 	}
 	map->player_y = y;
 	map->player_x = x;
-	// printf("%zu %zu\n", map->player_x, map->player_y);
 	check_border(map_array, map);
 	return (map_array);
 }
 
-/* les bordures de la carte sont check mtn il faut check si la carte est solvable + rajouter dans le makefile mapcheck et mapline check*/
+/* les bordures de la carte sont check mtn il faut check si la carte est
+solvable + rajouter dans le makefile mapcheck et mapline check*/

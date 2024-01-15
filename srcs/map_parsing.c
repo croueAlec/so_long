@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:43 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 14:58:52 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:00:01 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_sep_join(char *s1, char *s2, char *sep)
 	len_s2 = ft_safe_strlen(s2);
 	sep_len = ft_safe_strlen(sep);
 	res = malloc((len_s1 + len_s2 + sep_len + 1) * sizeof(char));
-	if(!res)
+	if (!res)
 		return (free(s1), NULL);
 	res[len_s1 + len_s2 + sep_len] = '\0';
 	while (len_s2--)
@@ -75,7 +75,7 @@ char	**getting_line(char *path, t_map *map)
 	{
 		line = get_next_line(fd);
 		if (++map->height && line == NULL)
-			break;
+			break ;
 		if (ft_strlen(line) != map->length)
 			return (free(res), free(map), ft_err(MAP_NOT_RECT, line), NULL);
 		res = ft_sep_join(res, line, "");

@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:44:32 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 19:05:50 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:01:41 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	**load_assets(t_data data)
 	void	**assets;
 
 	assets = malloc((ASSETS + 1) * sizeof(void *));
-	if(!assets)
+	if (!assets)
 		return (NULL);
 	image = data.img;
 	assets[DEFAULT_TEXTURE] = load_image(data, DEFAULT_TEXTURE_PATH);
