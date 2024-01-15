@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 16:25:51 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:38:55 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define EXIT 'E'
 # define PLAYER 'P'
 # define EX_PLAYER 'e'
-# define MAX_WIDTH 30
-# define MAX_HEIGHT 16
+# define MAX_WIDTH 60
+# define MAX_HEIGHT 32
 # define U_WALL 'U'
 # define D_WALL 'D'
 # define L_WALL 'L'
@@ -80,6 +80,7 @@
 # define DUPLICATE_SPAWN_POINT "Too many player spawn points"
 # define WRONG_MAP_CHAR "Unrecognized character in map file"
 # define BORDER_ERROR "Map is not completely closed"
+# define WIN_MSG "You win !"
 
 # define ESCAPE 65307
 # define UP 'w'

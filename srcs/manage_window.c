@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 16:45:03 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:38:39 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	can_move(t_map *map, int y_diff, int x_diff)
 	return (0);
 }
 
-char	exit_texture(t_data *data, char exit)
+char	exit_texture(t_data *data, char tile)
 {
 	void	**assets;
 	t_map	*map;
@@ -35,7 +35,13 @@ char	exit_texture(t_data *data, char exit)
 	x = map->player_x + 1;
 	y = map->player_y + 1;
 	assets = data->assets;
-	if (exit == EX_PLAYER)
+	if (map->coins == 0)
+	{
+		ft_free(map->map, map->height);
+		ft_end(*data, data->assets);
+		ft_err(WIN_MSG, map);
+	}
+	if (tile == EX_PLAYER)
 	{
 		put_image(*data, assets[EXIT_TEXTURE], y, x);
 		return (EXIT);
@@ -55,9 +61,7 @@ void	move_player(t_data *data, int y_diff, int x_diff)
 	map = data->map;
 	assets = data->assets;
 	if (map->map[map->player_y][map->player_x] == EX_PLAYER)
-	{
 		map->map[map->player_y][map->player_x] = exit_texture(data, EX_PLAYER);
-	}
 	else
 	{
 		put_image(*data, assets[TILE], map->player_y + 1, map->player_x + 1);
@@ -65,10 +69,10 @@ void	move_player(t_data *data, int y_diff, int x_diff)
 	}
 	map->player_y += y_diff;
 	map->player_x += x_diff;
+	if (map->map[map->player_y][map->player_x] == COIN)
+		map->coins--;
 	if (map->map[map->player_y][map->player_x] == EXIT)
-	{
 		map->map[map->player_y][map->player_x] = exit_texture(data, EXIT);
-	}
 	else
 	{
 		put_image(*data, assets[PLAYER_TEXTURE], map->player_y + 1, map->player_x + 1);
