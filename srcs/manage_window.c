@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 11:52:17 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 15:55:46 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,82 @@
 
 #include <stdio.h>
 
-int	ft_close(int keycode, t_data *data)
+int	can_move(t_map *map, int y_diff, int x_diff)
 {
+	char	new_tile;
+
+	printf("can move x %zu y %zu\n", map->player_x, map->player_y);
+	new_tile = map->map[map->player_y + y_diff][map->player_x + x_diff];
+	printf("%c\n", new_tile);
+	if (new_tile == SPACE || new_tile == EXIT || new_tile == COIN) // continuer a verifier les coords du joueur
+		return (1);
+	return (0);
+}
+
+void	print_map(char **map, size_t height, size_t length, size_t a, size_t b)
+{
+	printf("\n");
+	for (size_t i = 0; i < height; i++)
+	{
+		for (size_t j = 0; j < length; j++)
+		{
+			if (i == a && j == b)
+				printf("\033[0;31m");
+			printf("%c", map[i][j]);
+			if (i == a && j == b)
+				printf("\033[0m");
+		}
+		printf("\n");
+	}
+}
+
+void	move_player(t_data *data, int y_diff, int x_diff)
+{
+	void	**assets;
+	t_map	*map;
+
+	map = data->map;
+	assets = data->assets;
+	put_image(*data, assets[TILE], map->player_y + 1, map->player_x + 1);
+	map->map[map->player_y][map->player_x] = SPACE;
+	// printf("x %zu y %zu\n", map->player_x, map->player_y);
+	map->player_y += y_diff;
+	map->player_x += x_diff;
+	put_image(*data, assets[PLAYER_TEXTURE], map->player_y + 1, map->player_x + 1);
+	map->map[map->player_y][map->player_x] = PLAYER;
+	// print_map(map->map, map->height, map->length, map->player_y, map->player_x);
+	// printf("x %zu y %zu\n", map->player_x, map->player_y);
+}
+
+int	ft_hook(int keycode, t_data *data)
+{
+	t_map	*map;
+
+	map = data->map;
 	if (keycode == ESCAPE)
 	{
 		printf("close");
 		mlx_loop_end(data->mlx_ptr);
 	}
-	else if (keycode == 'w')
+	else if (keycode == UP && can_move(map, -1, 0))
 	{
 		printf("up\n");
+		move_player(data, -1, 0);
 	}
-	else if (keycode == 's')
+	else if (keycode == DOWN && can_move(map, 1, 0))
 	{
 		printf("down\n");
+		move_player(data, 1, 0);
 	}
-	else if (keycode == 'd')
+	else if (keycode == RIGHT && can_move(map, 0, 1))
 	{
 		printf("right\n");
+		move_player(data, 0, 1);
 	}
-	else if (keycode == 'a')
+	else if (keycode == LEFT && can_move(map, 0, -1))
 	{
 		printf("left\n");
+		move_player(data, 0, -1);
 	}
 	return (0);
 }
@@ -142,7 +196,7 @@ void	put_map(t_map *map, t_data data, void **assets)
 	y = 0;
 	while (y < map->height)
 	{
-		// printf("%s\n", map->map[y]);
+		printf("%s\n", map->map[y]);
 		x = 0;
 		while (x < map->length - 1)
 		{
@@ -151,12 +205,6 @@ void	put_map(t_map *map, t_data data, void **assets)
 		}
 		y++;
 	}
-}
-
-int	salut(t_data *data)
-{
-	mlx_loop_end(data->mlx_ptr);
-	return (0);
 }
 
 int	manage_window(t_map *map)
@@ -183,8 +231,9 @@ int	manage_window(t_map *map)
 	if (!assets)
 		return (ft_end(data, assets), perror(ASSET_FAIL), 0);
 	put_map(map, data, assets);
+	data.assets = assets;
 	mlx_hook(data.win_ptr, 17, 0, mlx_loop_end, data.mlx_ptr);
-	mlx_key_hook(data.win_ptr, ft_close, &data);
+	mlx_key_hook(data.win_ptr, ft_hook, &data);
 	mlx_loop(data.mlx_ptr);
 	return (ft_end(data, assets), 0);
 }

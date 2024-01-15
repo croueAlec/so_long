@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 11:20:44 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 15:57:16 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,9 @@
 # define TILE_VARIANT_PATH "textures/tile_variant.xpm"
 # define LONE_WALL_PATH "textures/lone_wall.xpm"
 
-
 /* Error messages */
 # define BAD_MAP_PATH "Bad map path"
-# define MAP_TOO_BIG "Map is too large, it must be at most 60 chars wide by 32 chars high"
+# define MAP_TOO_BIG "Map is too large, it must be  at most 60x32"
 # define MLX_FAIL "Failed to init MLX"
 # define WIN_FAIL "Failed to init Window"
 # define ASSET_FAIL "Failed to load assets"
@@ -82,5 +81,9 @@
 # define BORDER_ERROR "Map is not completely closed"
 
 # define ESCAPE 65307
+# define UP 'w'
+# define LEFT 'a'
+# define DOWN 's'
+# define RIGHT 'd'
 
 #endif

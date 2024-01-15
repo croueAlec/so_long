@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/12 12:54:14 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/15 14:37:16 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,8 +92,8 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES_FLAGS) -c $< -o $@
 
 clean:
-	@echo "$(RED)! Removing$(DEFAULT) ${OBJ_DIR} files"
-	@${RM} ${OBJ_DIR}
+	@echo "$(RED)! Removing$(DEFAULT) ${OBJS_DIR} files"
+	@${RM} ${OBJS_DIR}
 
 fclean: clean
 	@echo "$(RED)! Removing$(DEFAULT) $(NAME)"
