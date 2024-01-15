@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 15:57:16 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:25:51 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define COIN 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
+# define EX_PLAYER 'e'
 # define MAX_WIDTH 30
 # define MAX_HEIGHT 16
 # define U_WALL 'U'

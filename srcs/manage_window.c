@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 15:55:46 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:45:03 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,32 @@ int	can_move(t_map *map, int y_diff, int x_diff)
 {
 	char	new_tile;
 
-	printf("can move x %zu y %zu\n", map->player_x, map->player_y);
 	new_tile = map->map[map->player_y + y_diff][map->player_x + x_diff];
-	printf("%c\n", new_tile);
-	if (new_tile == SPACE || new_tile == EXIT || new_tile == COIN) // continuer a verifier les coords du joueur
+	if (new_tile == SPACE || new_tile == EXIT || new_tile == COIN)
 		return (1);
 	return (0);
 }
 
-void	print_map(char **map, size_t height, size_t length, size_t a, size_t b)
+char	exit_texture(t_data *data, char exit)
 {
-	printf("\n");
-	for (size_t i = 0; i < height; i++)
+	void	**assets;
+	t_map	*map;
+	size_t	y;
+	size_t	x;
+
+	map = data->map;
+	x = map->player_x + 1;
+	y = map->player_y + 1;
+	assets = data->assets;
+	if (exit == EX_PLAYER)
 	{
-		for (size_t j = 0; j < length; j++)
-		{
-			if (i == a && j == b)
-				printf("\033[0;31m");
-			printf("%c", map[i][j]);
-			if (i == a && j == b)
-				printf("\033[0m");
-		}
-		printf("\n");
+		put_image(*data, assets[EXIT_TEXTURE], y, x);
+		return (EXIT);
+	}
+	else
+	{
+		put_image(*data, assets[DEFAULT_TEXTURE], y, x);
+		return (EX_PLAYER);
 	}
 }
 
@@ -50,15 +54,26 @@ void	move_player(t_data *data, int y_diff, int x_diff)
 
 	map = data->map;
 	assets = data->assets;
-	put_image(*data, assets[TILE], map->player_y + 1, map->player_x + 1);
-	map->map[map->player_y][map->player_x] = SPACE;
-	// printf("x %zu y %zu\n", map->player_x, map->player_y);
+	if (map->map[map->player_y][map->player_x] == EX_PLAYER)
+	{
+		map->map[map->player_y][map->player_x] = exit_texture(data, EX_PLAYER);
+	}
+	else
+	{
+		put_image(*data, assets[TILE], map->player_y + 1, map->player_x + 1);
+		map->map[map->player_y][map->player_x] = SPACE;
+	}
 	map->player_y += y_diff;
 	map->player_x += x_diff;
-	put_image(*data, assets[PLAYER_TEXTURE], map->player_y + 1, map->player_x + 1);
-	map->map[map->player_y][map->player_x] = PLAYER;
-	// print_map(map->map, map->height, map->length, map->player_y, map->player_x);
-	// printf("x %zu y %zu\n", map->player_x, map->player_y);
+	if (map->map[map->player_y][map->player_x] == EXIT)
+	{
+		map->map[map->player_y][map->player_x] = exit_texture(data, EXIT);
+	}
+	else
+	{
+		put_image(*data, assets[PLAYER_TEXTURE], map->player_y + 1, map->player_x + 1);
+		map->map[map->player_y][map->player_x] = PLAYER;
+	}
 }
 
 int	ft_hook(int keycode, t_data *data)
@@ -186,7 +201,7 @@ void	*select_image(void **assets, char c)
 	return (assets[DEFAULT_TEXTURE]);
 }
 
-void	put_map(t_map *map, t_data data, void **assets)
+void	put_map(t_map *map, t_data data, void **tab)
 {
 	size_t	y;
 	size_t	x;
@@ -200,33 +215,44 @@ void	put_map(t_map *map, t_data data, void **assets)
 		x = 0;
 		while (x < map->length - 1)
 		{
-			put_image(data, select_image(assets, map_array[y][x]), y + 1, x + 1);
+			put_image(data, select_image(tab, map_array[y][x]), y + 1, x + 1);
 			x++;
 		}
 		y++;
 	}
 }
 
+void	*init_window(t_data data)
+{
+	void	*win_ptr;
+	size_t	width;
+	size_t	height;
+
+	width = (data.map->length + 1) * TILE_SIZE;
+	height = (data.map->height + 2) * TILE_SIZE;
+	win_ptr = mlx_new_window(data.mlx_ptr, width, height, "so_long");
+	if (!win_ptr)
+	{
+		mlx_destroy_display(data.mlx_ptr);
+		return (free(data.mlx_ptr), perror(WIN_FAIL), NULL);
+	}
+	return (win_ptr);
+}
+
 int	manage_window(t_map *map)
 {
 	t_data	data;
 	void	**assets;
-	size_t	width;
-	size_t	height;
 
-	width = (map->length + 1) * TILE_SIZE;
-	height = (map->height + 2) * TILE_SIZE;
+	data.map = map;
 	if (map->height > MAX_HEIGHT || map->length > MAX_WIDTH)
 		return (ft_free(map->map, map->height), ft_err(MAP_TOO_BIG, map), 0);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (ft_free(map->map, map->height), ft_err(MLX_FAIL, map), 0);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, width, height, "so_long");
+	data.win_ptr = init_window(data);
 	if (!data.win_ptr)
-	{
-		mlx_destroy_display(data.mlx_ptr);
-		return (free(data.mlx_ptr), perror(WIN_FAIL), 0);
-	}
+		return (0);
 	assets = load_assets(data);
 	if (!assets)
 		return (ft_end(data, assets), perror(ASSET_FAIL), 0);
