@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/12 18:51:59 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/15 11:20:44 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@
 
 /* Error messages */
 # define BAD_MAP_PATH "Bad map path"
+# define MAP_TOO_BIG "Map is too large, it must be at most 60 chars wide by 32 chars high"
+# define MLX_FAIL "Failed to init MLX"
+# define WIN_FAIL "Failed to init Window"
+# define ASSET_FAIL "Failed to load assets"
 # define MAP_NOT_RECT "Map is not a rectangle"
 # define MISSING_COIN "Not enough coins"
 # define MISSING_EXIT "No exit"
