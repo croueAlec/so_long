@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/16 11:31:02 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/16 15:22:49 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ define SRC :=
 	manage_window.c
 	load_assets.c
 	player.c
+	pates_finding.c
 endef
 SRC := $(strip $(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 14:44:42 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:25:10 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,8 @@ int	manage_window(t_map *map)
 	data.map = map;
 	if (map->height > MAX_HEIGHT || map->length > MAX_WIDTH)
 		return (ft_free(map->map, map->height), ft_err(MAP_TOO_BIG, map), 0);
+	if (!path_finding(&data, map, map->map))
+		return (ft_free(map->map, map->height), ft_err(MAP_IMPOSSIBLE, map), 0);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (ft_free(map->map, map->height), ft_err(MLX_FAIL, map), 0);

@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 14:37:43 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:21:19 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@
 /* Error messages */
 # define BAD_MAP_PATH "Bad map path"
 # define MAP_TOO_BIG "Map is too large, it must be  at most 60x32"
+# define MAP_IMPOSSIBLE "Map can't be solved"
 # define MLX_FAIL "Failed to init MLX"
 # define WIN_FAIL "Failed to init Window"
 # define ASSET_FAIL "Failed to load assets"

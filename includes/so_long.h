@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 14:42:36 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 16:27:41 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ typedef struct s_img
 	int		size;
 }	t_img;
 
+typedef struct s_flood
+{
+	char	**map;
+	size_t	coins;
+	size_t	exit;
+}	t_flood;
+
+
 typedef struct s_data
 {
 	void	**assets;
@@ -66,5 +74,6 @@ void	player_reaction(t_data *data, void **assets, char move);
 void	move_player(t_data *data, int y_diff, int x_diff, int texture);
 int		can_move(t_map *map, int y_diff, int x_diff);
 void	find_exit(char **map_array, t_data *data);
+int		path_finding(t_data *data, t_map *map, char **map_array);
 
 #endif
