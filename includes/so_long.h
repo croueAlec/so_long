@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 13:59:12 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 14:42:36 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_data
 	void	*win_ptr;
 	t_img	img;
 	t_map	*map;
+	size_t	exit_y;
+	size_t	exit_x;
 }	t_data;
 
 void	ft_err(char *error, void *ptr);
@@ -63,5 +65,6 @@ void	**load_player(t_data data, void **assets);
 void	player_reaction(t_data *data, void **assets, char move);
 void	move_player(t_data *data, int y_diff, int x_diff, int texture);
 int		can_move(t_map *map, int y_diff, int x_diff);
+void	find_exit(char **map_array, t_data *data);
 
 #endif

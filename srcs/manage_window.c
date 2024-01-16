@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 13:59:07 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 14:44:42 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	can_move(t_map *map, int y_diff, int x_diff)
 	char	new_tile;
 
 	new_tile = map->map[map->player_y + y_diff][map->player_x + x_diff];
-	if (new_tile == SPACE || new_tile == EXIT || new_tile == COIN)
+	if (new_tile == SPACE || new_tile == COIN)
 		return (1);
 	return (0);
 }
@@ -55,16 +55,16 @@ char	exit_texture(t_data *data, char tile)
 
 void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 {
-	void	**assets;
+	void	**asset;
 	t_map	*map;
 
 	map = data->map;
-	assets = data->assets;
+	asset = data->assets;
 	if (map->map[map->player_y][map->player_x] == EX_PLAYER)
 		map->map[map->player_y][map->player_x] = exit_texture(data, EX_PLAYER);
 	else
 	{
-		put_image(*data, assets[TILE], map->player_y + 1, map->player_x + 1);
+		put_image(*data, asset[TILE], map->player_y + 1, map->player_x + 1);
 		map->map[map->player_y][map->player_x] = SPACE;
 	}
 	map->player_y += y_diff;
@@ -75,9 +75,11 @@ void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 		map->map[map->player_y][map->player_x] = exit_texture(data, EXIT);
 	else
 	{
-		put_image(*data, assets[texture], map->player_y + 1, map->player_x + 1);
+		put_image(*data, asset[texture], map->player_y + 1, map->player_x + 1);
 		map->map[map->player_y][map->player_x] = PLAYER;
 	}
+	if (map->coins == 0)
+		put_image(*data, asset[EXIT_OPEN], data->exit_y + 1, data->exit_x + 1);
 }
 
 int	ft_hook(int keycode, t_data *data)
@@ -243,6 +245,7 @@ int	manage_window(t_map *map)
 	if (!assets)
 		return (ft_end(data, assets), ft_putstr_fd(ASSET_FAIL, 2), 0);
 	put_map(map, data, assets);
+	find_exit(data.map->map, &data);
 	data.assets = assets;
 	mlx_hook(data.win_ptr, 17, 0, mlx_loop_end, data.mlx_ptr);
 	mlx_key_hook(data.win_ptr, ft_hook, &data);

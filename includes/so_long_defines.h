@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 11:06:26 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 14:37:43 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 /* Textures */
 # define TILE_SIZE 32
-# define ASSETS 17
+# define ASSETS 18
 # define DEFAULT_TEXTURE 0
 # define PLAYER_TEXTURE 1
 # define EXIT_TEXTURE 2
@@ -49,13 +49,14 @@
 # define TILE 12
 # define TILE_VARIANT 13
 # define LONE_WALL 14
-# define PLAYER_BACK 15
-# define PLAYER_LEFT 16
-# define PLAYER_RIGHT 17
+# define EXIT_OPEN 15
+# define PLAYER_BACK 16
+# define PLAYER_LEFT 17
+# define PLAYER_RIGHT 18
 /* Texture paths */
 # define DEFAULT_TEXTURE_PATH "textures/default_texture.xpm"
 # define PLAYER_TEXTURE_PATH "textures/player_default.xpm"
-# define EXIT_TEXTURE_PATH "textures/exit.xpm"
+# define EXIT_TEXTURE_PATH "textures/exit_closed.xpm"
 # define COIN_TEXTURE_PATH "textures/coin.xpm"
 # define UPPER_LEFT_WALL_PATH "textures/upper_left_wall.xpm"
 # define LOWER_LEFT_WALL_PATH "textures/lower_left_wall.xpm"
@@ -68,6 +69,7 @@
 # define TILE_PATH "textures/tile.xpm"
 # define TILE_VARIANT_PATH "textures/tile_variant.xpm"
 # define LONE_WALL_PATH "textures/lone_wall.xpm"
+# define EXIT_OPEN_TEXTURE_PATH "textures/exit_open.xpm"
 # define PLAYER_BACK_PATH "textures/player_back.xpm"
 # define PLAYER_LEFT_PATH "textures/player_left.xpm"
 # define PLAYER_RIGHT_PATH "textures/player_right.xpm"

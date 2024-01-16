@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 16:01:20 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 14:44:29 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,31 @@ char	**check_map(char **map_array, t_map *map, char *res)
 	map->player_x = x;
 	check_border(map_array, map);
 	return (map_array);
+}
+
+void	find_exit(char **map_array, t_data *data)
+{
+	size_t	x;
+	size_t	y;
+	t_map *map;
+
+	map = data->map;
+	y = 0;
+	while (y < map->height - 1)
+	{
+		x = 0;
+		while (x < map->length - 1)
+		{
+			if (map_array[y][x] == EXIT)
+				break ;
+			x++;
+		}
+		if (map_array[y][x] == EXIT)
+			break ;
+		y++;
+	}
+	data->exit_y = y;
+	data->exit_x = x;
 }
 
 /* les bordures de la carte sont check mtn il faut check si la carte est
