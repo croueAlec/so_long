@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 11:41:49 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:59:07 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	exit_texture(t_data *data, char tile)
 	}
 }
 
-void	move_player(t_data *data, int y_diff, int x_diff)
+void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 {
 	void	**assets;
 	t_map	*map;
@@ -75,7 +75,7 @@ void	move_player(t_data *data, int y_diff, int x_diff)
 		map->map[map->player_y][map->player_x] = exit_texture(data, EXIT);
 	else
 	{
-		put_image(*data, assets[PLAYER_TEXTURE], map->player_y + 1, map->player_x + 1);
+		put_image(*data, assets[texture], map->player_y + 1, map->player_x + 1);
 		map->map[map->player_y][map->player_x] = PLAYER;
 	}
 }

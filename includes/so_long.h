@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 11:43:16 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:59:12 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		ft_end(t_data data, void **assets);
 void	*load_image(t_data data, char *path);
 void	**load_player(t_data data, void **assets);
 void	player_reaction(t_data *data, void **assets, char move);
-void	move_player(t_data *data, int y_diff, int x_diff);
+void	move_player(t_data *data, int y_diff, int x_diff, int texture);
 int		can_move(t_map *map, int y_diff, int x_diff);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:58 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 13:34:12 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:58:46 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	player_reaction(t_data *d, void **a, char move)
 	if (move == RIGHT)
 		put_image(*d, a[PLAYER_RIGHT], map->player_y + 1, map->player_x + 1);
 	if (move == UP && can_move(d->map, -1, 0))
-		move_player(d, -1, 0);
+		move_player(d, -1, 0, PLAYER_BACK);
 	if (move == DOWN && can_move(d->map, 1, 0))
-		move_player(d, 1, 0);
+		move_player(d, 1, 0, PLAYER_TEXTURE);
 	if (move == RIGHT && can_move(d->map, 0, 1))
-		move_player(d, 0, 1);
+		move_player(d, 0, 1, PLAYER_RIGHT);
 	if (move == LEFT && can_move(d->map, 0, -1))
-		move_player(d, 0, -1);
+		move_player(d, 0, -1, PLAYER_LEFT);
 }
