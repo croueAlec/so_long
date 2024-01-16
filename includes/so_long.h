@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 19:38:27 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 20:02:34 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_data
 	int		steps;
 }	t_data;
 
+char	*ft_sep_join(char *s1, char *s2, char *sep);
 void	ft_err(char *error, void *ptr);
 char	**getting_line(char *path, t_map *map);
 char	**check_map(char **map_array, t_map *map, char *res);

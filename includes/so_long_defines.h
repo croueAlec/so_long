@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 15:21:19 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 20:03:58 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@
 # define PLAYER_LEFT_PATH "textures/player_left.xpm"
 # define PLAYER_RIGHT_PATH "textures/player_right.xpm"
 
-/* Error messages */
+/* Messages */
 # define BAD_MAP_PATH "Bad map path"
 # define MAP_TOO_BIG "Map is too large, it must be  at most 60x32"
 # define MAP_IMPOSSIBLE "Map can't be solved"
@@ -90,6 +90,8 @@
 # define WRONG_MAP_CHAR "Unrecognized character in map file"
 # define BORDER_ERROR "Map is not completely closed"
 # define WIN_MSG "You win ! Thanks for playing"
+# define STEPS "Steps"
+
 
 # define ESCAPE 65307
 # define UP 'w'

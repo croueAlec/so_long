@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 19:44:36 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 20:26:27 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,21 +227,30 @@ void	*init_window(t_data data)
 	return (win_ptr);
 }
 
-int	color(int red, int green, int blue)
+int	rgb(int red, int green, int blue)
 {
-	return (red << 24 | green << 16 | blue << 8);
+	return (red << 16 | green << 8 | blue);
 }
 
 void	put_string(t_data *data)
 {
+	char	*s1;
+	char	*s2;
 	void	*mlx;
-	void	*win;
-	size_t	s;
+	size_t	x;
+	size_t	y;
 
 	mlx = data->mlx_ptr;
-	win = data->win_ptr;
-	s = TILE_SIZE;
-	mlx_string_put(mlx, win, s, s - s / 3, color(255, 250, 250), "salut!");
+	x = TILE_SIZE * 3;
+	y = TILE_SIZE - (TILE_SIZE / 3);
+	s1 = ft_itoa(data->steps - 1);
+	s2 = ft_itoa(data->steps);
+	mlx_string_put(mlx, data->win_ptr, x / 3, y, rgb(0, 0, 0), STEPS);
+	mlx_string_put(mlx, data->win_ptr, x / 3, y, rgb(255, 255, 255), STEPS);
+	mlx_string_put(mlx, data->win_ptr, x, y, rgb(0, 0, 0), s1);
+	mlx_string_put(mlx, data->win_ptr, x, y, rgb(255, 255, 255), s2);
+	free(s1);
+	free(s2);
 }
 
 void	init_data(t_data *data, t_map *map)
