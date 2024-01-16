@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 17:37:09 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 11:43:16 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ int		manage_window(t_map *map);
 void	**load_assets(t_data data);
 void	clear_images(t_data data, void **assets, size_t size);
 int		put_image(t_data data, void *mlx_img, size_t y_axis, size_t x_axis);
-int	ft_end(t_data data, void **assets);
+int		ft_end(t_data data, void **assets);
+void	*load_image(t_data data, char *path);
+void	**load_player(t_data data, void **assets);
+void	player_reaction(t_data *data, void **assets, char move);
+void	move_player(t_data *data, int y_diff, int x_diff);
+int		can_move(t_map *map, int y_diff, int x_diff);
 
 #endif

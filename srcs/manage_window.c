@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 19:16:05 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 11:41:49 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,34 +82,16 @@ void	move_player(t_data *data, int y_diff, int x_diff)
 
 int	ft_hook(int keycode, t_data *data)
 {
-	t_map	*map;
-
-	map = data->map;
 	if (keycode == ESCAPE)
-	{
-		printf("close");
 		mlx_loop_end(data->mlx_ptr);
-	}
-	else if (keycode == UP && can_move(map, -1, 0))
-	{
-		printf("up\n");
-		move_player(data, -1, 0);
-	}
-	else if (keycode == DOWN && can_move(map, 1, 0))
-	{
-		printf("down\n");
-		move_player(data, 1, 0);
-	}
-	else if (keycode == RIGHT && can_move(map, 0, 1))
-	{
-		printf("right\n");
-		move_player(data, 0, 1);
-	}
-	else if (keycode == LEFT && can_move(map, 0, -1))
-	{
-		printf("left\n");
-		move_player(data, 0, -1);
-	}
+	else if (keycode == UP)
+		player_reaction(data, data->assets, UP);
+	else if (keycode == DOWN)
+		player_reaction(data, data->assets, DOWN);
+	else if (keycode == RIGHT)
+		player_reaction(data, data->assets, RIGHT);
+	else if (keycode == LEFT)
+		player_reaction(data, data->assets, LEFT);
 	return (0);
 }
 
