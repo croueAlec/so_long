@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 15:25:10 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 19:44:36 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,12 +227,35 @@ void	*init_window(t_data data)
 	return (win_ptr);
 }
 
+int	color(int red, int green, int blue)
+{
+	return (red << 24 | green << 16 | blue << 8);
+}
+
+void	put_string(t_data *data)
+{
+	void	*mlx;
+	void	*win;
+	size_t	s;
+
+	mlx = data->mlx_ptr;
+	win = data->win_ptr;
+	s = TILE_SIZE;
+	mlx_string_put(mlx, win, s, s - s / 3, color(255, 250, 250), "salut!");
+}
+
+void	init_data(t_data *data, t_map *map)
+{
+	data->map = map;
+	data->steps = 1;
+}
+
 int	manage_window(t_map *map)
 {
 	t_data	data;
 	void	**assets;
 
-	data.map = map;
+	init_data(&data, map);
 	if (map->height > MAX_HEIGHT || map->length > MAX_WIDTH)
 		return (ft_free(map->map, map->height), ft_err(MAP_TOO_BIG, map), 0);
 	if (!path_finding(&data, map, map->map))

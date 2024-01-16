@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:58 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 13:58:46 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 19:38:45 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	**load_player(t_data data, void **assets)
 	return (assets);
 }
 
-
-void	player_reaction(t_data *d, void **a, char move)
+void	player_turn(t_data *d, void **a, char move)
 {
 	t_map	*map;
 
@@ -43,12 +42,33 @@ void	player_reaction(t_data *d, void **a, char move)
 		put_image(*d, a[PLAYER_LEFT], map->player_y + 1, map->player_x + 1);
 	if (move == RIGHT)
 		put_image(*d, a[PLAYER_RIGHT], map->player_y + 1, map->player_x + 1);
-	if (move == UP && can_move(d->map, -1, 0))
-		move_player(d, -1, 0, PLAYER_BACK);
-	if (move == DOWN && can_move(d->map, 1, 0))
-		move_player(d, 1, 0, PLAYER_TEXTURE);
-	if (move == RIGHT && can_move(d->map, 0, 1))
-		move_player(d, 0, 1, PLAYER_RIGHT);
-	if (move == LEFT && can_move(d->map, 0, -1))
-		move_player(d, 0, -1, PLAYER_LEFT);
+}
+
+void	player_reaction(t_data *data, void **assets, char move)
+{
+	player_turn(data, assets, move);
+	if (move == UP && can_move(data->map, -1, 0))
+	{
+		put_string(data);
+		ft_printf("%d step(s)\n", data->steps++);
+		move_player(data, -1, 0, PLAYER_BACK);
+	}
+	if (move == DOWN && can_move(data->map, 1, 0))
+	{
+		put_string(data);
+		ft_printf("%d step(s)\n", data->steps++);
+		move_player(data, 1, 0, PLAYER_TEXTURE);
+	}
+	if (move == RIGHT && can_move(data->map, 0, 1))
+	{
+		put_string(data);
+		ft_printf("%d step(s)\n", data->steps++);
+		move_player(data, 0, 1, PLAYER_RIGHT);
+	}
+	if (move == LEFT && can_move(data->map, 0, -1))
+	{
+		put_string(data);
+		ft_printf("%d step(s)\n", data->steps++);
+		move_player(data, 0, -1, PLAYER_LEFT);
+	}
 }

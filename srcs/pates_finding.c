@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:56:06 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 17:49:12 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/16 19:04:28 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ static void	path(t_map *map, t_flood *flood, size_t y, size_t x)
 	char	**m;
 
 	m = flood->map;
-	printf("\n\n");
-	for (size_t i = 0; i < map->height; i++)
-		printf("%s\n", flood->map[i]);
 	if (flood->map[y][x] == WALL)
 		return ;
 	else if (flood->map[y][x] == EXIT)
@@ -69,14 +66,11 @@ static void	path(t_map *map, t_flood *flood, size_t y, size_t x)
 	flood->map[y][x] = WALL;
 	if (y - 1 > 0 && m[y - 1][x] != WALL)
 		path(map, flood, y - 1, x);
-
 	if (y + 1 < map->height && m[y + 1][x] != WALL)
 		path(map, flood, y + 1, x);
-
 	if (x - 1 > 0 && m[y][x - 1] != WALL)
 		path(map, flood, y, x - 1);
-
-	if (x + 1 < map->height && m[y][x + 1] != WALL)
+	if (x + 1 < map->length && m[y][x + 1] != WALL)
 		path(map, flood, y, x + 1);
 }
 
@@ -88,10 +82,8 @@ int	path_finding(t_data *data, t_map *map, char **map_array)
 	flood.exit = 0;
 	flood.map = array_cpy(map_array, map->height);
 	path(map, &flood, map->player_y, map->player_x);
-	printf("\n");
-	for (size_t i = 0; i < map->height; i++)
-		printf("%s\n", flood.map[i]);
-	printf("\n%zu %zu\t%zu %zu\n", flood.coins, flood.exit, map->coins, map->exit);
 	ft_free(flood.map, data->map->height);
-	return (1);
+	if (flood.coins == map->coins && flood.exit == map->exit)
+		return (1);
+	return (0);
 }
