@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 13:34:26 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 17:01:43 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,37 @@ typedef struct s_data
 	int		steps;
 }	t_data;
 
-char	*ft_sep_join(char *s1, char *s2, char *sep);
+/* error_handling.c */
 void	ft_err(char *error, void *ptr);
-char	**getting_line(char *path, t_map *map);
-char	**check_map(char **map_array, t_map *map, char *res);
-char	*check_line(char *line, t_map *map);
-int		manage_window(t_map *map);
-void	**load_assets(t_data data);
 void	clear_images(t_data data, void **assets, size_t size);
-int		put_image(t_data data, void *mlx_img, size_t y_axis, size_t x_axis);
 int		ft_end(t_data data, void **assets);
+/* load_assets.c */
+void	**load_assets(t_data data);
 void	*load_image(t_data data, char *path);
+/* manage_window.c */
+void	win_map(t_data *data, int y_diff, int x_diff);
+int		manage_window(t_map *map);
+/* map_building.c */
+int		put_image(t_data data, void *mlx_img, size_t y_axis, size_t x_axis);
+void	put_map(t_map *map, t_data data, void **tab);
+/* map_check.c */
+char	**check_map(char **map_array, t_map *map, char *res);
+void	find_exit(char **map_array, t_data *data);
+/* map_line_check.c */
+char	*check_line(char *line, t_map *map);
+/* map_parsing.c */
+char	*ft_sep_join(char *s1, char *s2, char *sep);
+char	**getting_line(char *path, t_map *map);
+/* pates_finding.c */
+int		path_finding(t_data *data, t_map *map, char **map_array);
+/* player.c */
 void	**load_player(t_data data, void **assets);
 void	player_reaction(t_data *data, void **assets, char move);
-void	move_player(t_data *data, int y_diff, int x_diff, int texture);
-int		can_move(t_map *map, int y_diff, int x_diff, t_data *data);
-void	find_exit(char **map_array, t_data *data);
-int		path_finding(t_data *data, t_map *map, char **map_array);
-int		put_string(t_data *data);
+/* player_movement.c */
 int		ft_hook(int keycode, t_data *data);
-void	win_map(t_data *data, int y_diff, int x_diff);
-void	put_map(t_map *map, t_data data, void **tab);
+int		can_move(t_map *map, int y_diff, int x_diff, t_data *data);
+void	move_player(t_data *data, int y_diff, int x_diff, int texture);
+/* put_string.c */
+int		put_string(t_data *data);
 
 #endif
