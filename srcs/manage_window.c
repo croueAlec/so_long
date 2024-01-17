@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 11:30:49 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 12:32:12 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	exit_texture(t_data *data, char tile)
 	}
 }
 
-void	animate_player(t_data *data, int y_diff, int x_diff)
+void	win_map(t_data *data, int y_diff, int x_diff)
 {
 	void	**assets;
 	t_map	*map;
@@ -66,8 +66,7 @@ void	animate_player(t_data *data, int y_diff, int x_diff)
 	map = data->map;
 	y = map->player_y - y_diff + 1;
 	x = map->player_x - x_diff + 1;
-	put_image(*data, assets[DEFAULT_TEXTURE], map->player_y + 1, map->player_x + 1);
-	sleep(10);
+	ft_putendl_fd(WIN_MSG, 1);
 	mlx_loop_end(data->mlx_ptr);
 }
 
@@ -90,7 +89,7 @@ void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 	if (map->map[map->player_y][map->player_x] == COIN)
 		map->coins--;
 	if (map->map[map->player_y][map->player_x] == EXIT)
-		animate_player(data, y_diff, x_diff);
+		win_map(data, y_diff, x_diff);
 	else
 	{
 		put_image(*data, asset[texture], map->player_y + 1, map->player_x + 1);
@@ -103,7 +102,7 @@ void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 	If you want to make the exit texture walkable use
 		map->map[map->player_y][map->player_x] = exit_texture(data, EXIT);
 	instead of
-		animate_player(data, y_diff, x_diff);
+		win_map(data, y_diff, x_diff);
 	and in can_move remove
 	 && data->map->coins == 0
  */
