@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 12:58:56 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:57:22 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define PLAYER_BACK 16
 # define PLAYER_LEFT 17
 # define PLAYER_RIGHT 18
+
 /* Texture paths */
 # define DEFAULT_TEXTURE_PATH "textures/default_texture.xpm"
 # define PLAYER_TEXTURE_PATH "textures/player_default.xpm"

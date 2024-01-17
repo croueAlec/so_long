@@ -6,13 +6,11 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:56:06 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 13:09:22 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 14:23:08 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-#include <stdio.h>
 
 static char	restore_map(char c)
 {

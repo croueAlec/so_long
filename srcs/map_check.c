@@ -6,13 +6,11 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 13:08:15 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 14:23:02 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-#include <stdio.h>
 
 int	check_border_line(char *line, size_t length, char wall)
 {
