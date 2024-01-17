@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:56:06 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 19:04:28 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:09:22 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	**array_cpy(char **map, size_t height)
 	i = 0;
 	length = 0;
 	res = ft_calloc((height + 1), sizeof(char *));
-	if(!res)
+	if (!res)
 		return (NULL);
 	res[height] = NULL;
 	while (i < height)
@@ -87,3 +87,8 @@ int	path_finding(t_data *data, t_map *map, char **map_array)
 		return (1);
 	return (0);
 }
+
+/*
+	Here we have our map's pathfinding, it makes sure the coins and the exit
+	are all reachable by the player
+*/

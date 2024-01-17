@@ -6,13 +6,11 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:43 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 18:31:27 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:28:39 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-#include <stdio.h>
 
 char	*ft_sep_join(char *s1, char *s2, char *sep)
 {
@@ -36,14 +34,6 @@ char	*ft_sep_join(char *s1, char *s2, char *sep)
 		res[len_s1] = s1[len_s1];
 	free(s1);
 	return (res);
-}
-
-void	ft_err(char *error, void *ptr)
-{
-	if (ptr)
-		free(ptr);
-	ft_putstr_fd(error, 2);
-	exit(0);
 }
 
 void	ft_free_tab(char **tab, size_t j)
@@ -81,7 +71,10 @@ char	**getting_line(char *path, t_map *map)
 		res = ft_sep_join(res, line, "");
 		free(line);
 	}
-	printf("%s", res);
 	map->map = check_map(ft_split(check_line(res, map), '\n'), map, res);
 	return (map->map);
 }
+
+/*
+	Here we have the map's getting and parsing
+*/

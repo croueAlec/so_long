@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:58 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 12:47:16 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:10:46 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,7 @@ void	player_reaction(t_data *data, void **assets, char move)
 		move_player(data, 0, -1, PLAYER_LEFT);
 	}
 }
+
+/*
+	Here we load the players movement textures and handle their uses
+*/

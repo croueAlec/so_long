@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 12:48:17 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:34:26 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_flood
 	size_t	exit;
 }	t_flood;
 
-
 typedef struct s_data
 {
 	void	**assets;
@@ -78,5 +77,8 @@ int		can_move(t_map *map, int y_diff, int x_diff, t_data *data);
 void	find_exit(char **map_array, t_data *data);
 int		path_finding(t_data *data, t_map *map, char **map_array);
 int		put_string(t_data *data);
+int		ft_hook(int keycode, t_data *data);
+void	win_map(t_data *data, int y_diff, int x_diff);
+void	put_map(t_map *map, t_data data, void **tab);
 
 #endif

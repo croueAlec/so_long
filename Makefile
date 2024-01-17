@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/17 12:47:43 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/17 13:33:32 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,15 +54,18 @@ endef
 INCLUDES := $(strip $(INCLUDES))
 
 define SRC :=
-	so_long.c
-	map_parsing.c
+	error_handling.c
+	load_assets.c
+	manage_window.c
+	map_building.c
 	map_check.c
 	map_line_check.c
-	manage_window.c
-	load_assets.c
-	player.c
+	map_parsing.c
 	pates_finding.c
+	player_movement.c
+	player.c
 	put_string.c
+	so_long.c
 endef
 SRC := $(strip $(SRC))
 

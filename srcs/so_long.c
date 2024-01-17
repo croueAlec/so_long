@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:27:08 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 18:31:47 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:12:41 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,8 @@ int	main(int argc, char *argv[])
 	manage_window(map);
 	return (ft_free(map->map, map->height), free(map), 0);
 }
+
+/*
+	Here we have our main function, and that's it.
+	Not much going on here.
+*/

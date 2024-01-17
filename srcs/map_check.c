@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 14:44:29 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:08:15 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	find_exit(char **map_array, t_data *data)
 {
 	size_t	x;
 	size_t	y;
-	t_map *map;
+	t_map	*map;
 
 	map = data->map;
 	y = 0;
@@ -121,5 +121,7 @@ void	find_exit(char **map_array, t_data *data)
 	data->exit_x = x;
 }
 
-/* les bordures de la carte sont check mtn il faut check si la carte est
-solvable + rajouter dans le makefile mapcheck et mapline check*/
+/*
+	Here we make sure that the shape of the map is ok.
+	We also format it so our wall textures are correctly placed
+*/

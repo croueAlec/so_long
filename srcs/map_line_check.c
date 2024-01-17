@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:12:10 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/11 19:18:49 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:05:10 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,7 @@ char	*check_line(char *line, t_map *map)
 	map_error(line, map);
 	return (line);
 }
+
+/*
+	Here we check the map's lines for coins, exits, players and forbidden chars
+*/

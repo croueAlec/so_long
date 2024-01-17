@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:45:03 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 12:56:05 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:11:12 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int	put_string(t_data *data)
 	mlx_string_put(mlx, data->win_ptr, x / 3, y, rgb(255, 255, 255), STEPS);
 	mlx_string_put(mlx, data->win_ptr, x, y, rgb(0, 0, 0), s1);
 	mlx_string_put(mlx, data->win_ptr, x, y, rgb(255, 255, 255), s2);
-	free(s1);
-	free(s2);
 	ft_printf("%d step(s)\n", data->steps++);
-	return (0);
+	return (free(s1), free(s2), 0);
 }
+
+/*
+	Here we have all the functions relevant to putting the string on the screen
+*/

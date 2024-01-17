@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 12:54:24 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 12:58:56 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@
 # define WIN_MSG "You win ! Thanks for playing"
 # define STEPS "Steps"
 
-
+/* Controls */
 # define ESCAPE 65307
 # define UP 'w'
 # define LEFT 'a'
