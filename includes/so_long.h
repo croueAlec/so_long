@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 12:28:19 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 12:48:17 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void	move_player(t_data *data, int y_diff, int x_diff, int texture);
 int		can_move(t_map *map, int y_diff, int x_diff, t_data *data);
 void	find_exit(char **map_array, t_data *data);
 int		path_finding(t_data *data, t_map *map, char **map_array);
-void	put_string(t_data *data);
+int		put_string(t_data *data);
 
 #endif

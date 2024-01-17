@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:58 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 11:14:21 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 12:47:16 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,21 @@ void	player_reaction(t_data *data, void **assets, char move)
 	if (move == UP && can_move(data->map, -1, 0, data))
 	{
 		put_string(data);
-		ft_printf("%d step(s)\n", data->steps++);
 		move_player(data, -1, 0, PLAYER_BACK);
 	}
 	if (move == DOWN && can_move(data->map, 1, 0, data))
 	{
 		put_string(data);
-		ft_printf("%d step(s)\n", data->steps++);
 		move_player(data, 1, 0, PLAYER_TEXTURE);
 	}
 	if (move == RIGHT && can_move(data->map, 0, 1, data))
 	{
 		put_string(data);
-		ft_printf("%d step(s)\n", data->steps++);
 		move_player(data, 0, 1, PLAYER_RIGHT);
 	}
 	if (move == LEFT && can_move(data->map, 0, -1, data))
 	{
 		put_string(data);
-		ft_printf("%d step(s)\n", data->steps++);
 		move_player(data, 0, -1, PLAYER_LEFT);
 	}
 }

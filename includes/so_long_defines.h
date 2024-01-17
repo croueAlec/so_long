@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 20:03:58 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 12:54:24 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@
 # define DUPLICATE_SPAWN_POINT "Too many player spawn points"
 # define WRONG_MAP_CHAR "Unrecognized character in map file"
 # define BORDER_ERROR "Map is not completely closed"
+# define MALLOC_ERR "A malloc failed"
 # define WIN_MSG "You win ! Thanks for playing"
 # define STEPS "Steps"
 

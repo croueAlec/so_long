@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 12:32:12 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 12:45:21 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	clear_images(t_data data, void **assets, size_t size)
 
 	i = 0;
 	mlx_clear_window(data.mlx_ptr, data.win_ptr);
-	while (i <= size)
+	while (i <= size && size != 0)
 	{
 		mlx_destroy_image(data.mlx_ptr, assets[i]);
 		i++;
@@ -150,7 +150,8 @@ void	clear_images(t_data data, void **assets, size_t size)
 
 int	ft_end(t_data data, void **assets)
 {
-	clear_images(data, assets, ASSETS);
+	if (assets)
+		clear_images(data, assets, ASSETS);
 	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
@@ -252,36 +253,6 @@ void	*init_window(t_data data)
 	return (win_ptr);
 }
 
-int	rgb(int red, int green, int blue)
-{
-	return (red << 16 | green << 8 | blue);
-}
-
-void	put_string(t_data *data)
-{
-	char	*s1;
-	char	*s2;
-	void	*mlx;
-	size_t	x;
-	size_t	y;
-
-	mlx = data->mlx_ptr;
-	x = TILE_SIZE * 3;
-	y = TILE_SIZE - (TILE_SIZE / 3);
-	s1 = ft_itoa(data->steps - 1);
-	if (!s1)
-		return ;
-	s2 = ft_itoa(data->steps);
-	mlx_string_put(mlx, data->win_ptr, x / 3, y, rgb(0, 0, 0), STEPS);
-	mlx_string_put(mlx, data->win_ptr, x / 3, y, rgb(255, 255, 255), STEPS);
-	mlx_string_put(mlx, data->win_ptr, x, y, rgb(0, 0, 0), s1);
-	if (s2)
-		mlx_string_put(mlx, data->win_ptr, x, y, rgb(255, 255, 255), s2);
-	free(s1);
-	if (s2)
-		free(s2);
-}
-
 void	init_data(t_data *data, t_map *map)
 {
 	data->map = map;
@@ -306,7 +277,7 @@ int	manage_window(t_map *map)
 		return (0);
 	assets = load_assets(data);
 	if (!assets)
-		return (ft_end(data, assets), ft_putstr_fd(ASSET_FAIL, 2), 0);
+		return (ft_end(data, NULL), ft_putstr_fd(ASSET_FAIL, 2), 0);
 	put_map(map, data, assets);
 	find_exit(data.map->map, &data);
 	data.assets = assets;
