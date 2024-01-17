@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 20:11:12 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 14:23:18 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 18:13:04 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void	find_exit(char **map_array, t_data *data)
 	}
 	data->exit_y = y;
 	data->exit_x = x;
+	find_enemy(map_array, data);
 }
 
 /*

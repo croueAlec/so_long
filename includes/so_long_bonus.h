@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 16:55:44 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:12:56 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map
 	size_t	player;
 	size_t	player_x;
 	size_t	player_y;
+	size_t	enemy_x;
+	size_t	enemy_y;
 }	t_map;
 
 typedef struct s_img
@@ -60,10 +62,15 @@ typedef struct s_data
 	int		steps;
 }	t_data;
 
+/* enemy_bonus.c */
+void	**load_enemy(t_data data, void **assets);
+void	find_enemy(char **map_array, t_data *data);
+void	enemy_pathfind(t_data *data);
 /* error_handling_bonus.c */
 void	ft_err(char *error, void *ptr);
 void	clear_images(t_data data, void **assets, size_t size);
 int		ft_end(t_data data, void **assets);
+void	player_lose(t_data *data, t_map *map);
 /* load_assets_bonus.c */
 void	*load_image(t_data data, char *path);
 void	**load_assets(t_data data);
@@ -71,6 +78,7 @@ void	**load_assets(t_data data);
 void	win_map(t_data *data, int y_diff, int x_diff);
 int		manage_window(t_map *map);
 /* map_building_bonus.c */
+int		ft_fake_rand(void);
 int		put_image(t_data data, void *mlx_img, size_t y_axis, size_t x_axis);
 void	put_map(t_map *map, t_data data, void **tab);
 /* map_check_bonus.c */

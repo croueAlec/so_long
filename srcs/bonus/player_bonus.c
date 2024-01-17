@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:58 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 16:07:12 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:01:32 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	player_turn(t_data *d, void **a, char move)
 
 void	player_reaction(t_data *data, void **assets, char move)
 {
+	enemy_pathfind(data);
 	player_turn(data, assets, move);
 	if (move == UP && can_move(data->map, -1, 0, data))
 	{

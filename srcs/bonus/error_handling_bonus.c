@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:27:05 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 14:19:31 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 18:53:25 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ int	ft_end(t_data data, void **assets)
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 	return (0);
+}
+
+void	player_lose(t_data *data, t_map *map)
+{
+	ft_free(map->map, map->height);
+	ft_end(*data, data->assets);
+	ft_err(LOSE_MSG, map);
 }
 
 /*

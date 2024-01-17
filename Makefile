@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/17 16:51:41 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/17 18:56:56 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ endef
 SRC := $(strip $(SRC))
 
 define BONUS_SRC :=
-	$(addprefix $(BONUS_DIR)/, error_handling_bonus.c \
+	$(addprefix $(BONUS_DIR)/, enemy_bonus.c \
+	error_handling_bonus.c \
 	load_assets_bonus.c \
 	manage_window_bonus.c \
 	map_building_bonus.c \

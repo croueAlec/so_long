@@ -6,13 +6,13 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:17:20 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 14:21:32 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:12:37 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long_bonus.h"
 
-static int	ft_fake_rand(void)
+int	ft_fake_rand(void)
 {
 	int		fd;
 	char	buf[1];
@@ -73,6 +73,8 @@ void	*select_image(void **assets, char c)
 		return (select_wall(assets, c));
 	if (c == A_CORNER || c == B_CORNER || c == C_CORNER || c == D_CORNER)
 		return (select_wall(assets, c));
+	if (c == ENEMY)
+		return (assets[ENEMY_DEFAULT]);
 	i = ft_fake_rand();
 	if (c == SPACE && (i % 5 == 0))
 		return (assets[TILE_VARIANT]);

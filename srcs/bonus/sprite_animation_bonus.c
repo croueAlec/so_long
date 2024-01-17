@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_animation.c                                 :+:      :+:    :+:   */
+/*   sprite_animation_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:29:14 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 16:39:00 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:09:31 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	**load_animation_two(t_data data, void **assets)
 	assets[SPRITE_SEVEN] = load_image(data, SPRITE_SEVEN_PATH);
 	if (!assets[SPRITE_SEVEN])
 		return (clear_images(data, assets, SPRITE_SEVEN), NULL);
+	assets = load_enemy(data, assets);
+	if (!assets)
+		return (NULL);
 	return (assets);
 }
 
@@ -53,6 +56,8 @@ void	**load_animation(t_data data, void **assets)
 	if (!assets[SPRITE_FOUR])
 		return (clear_images(data, assets, SPRITE_FOUR), NULL);
 	assets = load_animation_two(data, assets);
+	if (!assets)
+		return (NULL);
 	return (assets);
 }
 

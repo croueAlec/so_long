@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 15:25:15 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 18:48:10 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define COIN 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
+# define ENEMY 'H'
 # define EX_PLAYER 'e'
 # define MAX_WIDTH 60
 # define MAX_HEIGHT 32
@@ -33,7 +34,7 @@
 
 /* Textures */
 # define TILE_SIZE 32
-# define ASSETS 27
+# define ASSETS 31
 # define DEFAULT_TEXTURE 0
 # define PLAYER_TEXTURE 1
 # define EXIT_TEXTURE 2
@@ -62,6 +63,10 @@
 # define SPRITE_FIVE 25
 # define SPRITE_SIX 26
 # define SPRITE_SEVEN 27
+# define ENEMY_DEFAULT 28
+# define ENEMY_BACK 29
+# define ENEMY_LEFT 30
+# define ENEMY_RIGHT 31
 
 /* Texture paths */
 # define DEFAULT_TEXTURE_PATH "textures/default_texture.xpm"
@@ -92,6 +97,10 @@
 # define SPRITE_FIVE_PATH "textures/sprite_five.xpm"
 # define SPRITE_SIX_PATH "textures/sprite_six.xpm"
 # define SPRITE_SEVEN_PATH "textures/sprite_seven.xpm"
+# define ENEMY_DEFAULT_PATH "textures/enemy_default.xpm"
+# define ENEMY_BACK_PATH "textures/enemy_back.xpm"
+# define ENEMY_LEFT_PATH "textures/enemy_left.xpm"
+# define ENEMY_RIGHT_PATH "textures/enemy_right.xpm"
 
 /* Messages */
 # define BAD_MAP_PATH "Bad map path"
@@ -101,6 +110,8 @@
 # define WIN_FAIL "Failed to init Window"
 # define ASSET_FAIL "Failed to load assets"
 # define MAP_NOT_RECT "Map is not a rectangle"
+# define MISSING_ENEMY "Map is missing an enemy character"
+# define TOO_MANY_ENEMIES "Map has too many enemy characters"
 # define MISSING_COIN "Not enough coins"
 # define MISSING_EXIT "No exit"
 # define MISSING_SPAWN_POINT "No player spawn point"
@@ -110,6 +121,7 @@
 # define BORDER_ERROR "Map is not completely closed"
 # define MALLOC_ERR "A malloc failed"
 # define WIN_MSG "You win ! Thanks for playing"
+# define LOSE_MSG "You lose ! Better luck next time"
 # define STEPS "Steps"
 
 /* Controls */
