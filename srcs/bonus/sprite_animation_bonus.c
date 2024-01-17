@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:29:14 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 16:35:57 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 16:39:00 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ static void	loop_animation(t_data data, void **assets, size_t y, size_t x)
 void	animation(t_data data, size_t y, size_t x)
 {
 	void	**assets;
+
 	assets = data.assets;
 	put_sleep(data, assets[SPRITE_DEFAULT], y, x);
 	put_sleep(data, assets[SPRITE_INIT], y, x);

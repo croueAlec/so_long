@@ -6,13 +6,13 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:45:03 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 14:22:11 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 16:49:14 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long_bonus.h"
 
-int	rgb(int red, int green, int blue)
+static int	rgb(int red, int green, int blue)
 {
 	return (red << 16 | green << 8 | blue);
 }

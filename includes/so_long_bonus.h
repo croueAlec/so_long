@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 16:35:54 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 16:55:44 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-#include <time.h>
+# include <time.h>
 # include "../../libs/libft/libft.h"
 # include "../../libs/minilibx-linux/mlx.h"
 # include "../../includes/so_long_defines_bonus.h"
@@ -60,27 +60,39 @@ typedef struct s_data
 	int		steps;
 }	t_data;
 
-char	*ft_sep_join(char *s1, char *s2, char *sep);
+/* error_handling_bonus.c */
 void	ft_err(char *error, void *ptr);
-char	**getting_line(char *path, t_map *map);
-char	**check_map(char **map_array, t_map *map, char *res);
-char	*check_line(char *line, t_map *map);
-int		manage_window(t_map *map);
-void	**load_assets(t_data data);
 void	clear_images(t_data data, void **assets, size_t size);
-int		put_image(t_data data, void *mlx_img, size_t y_axis, size_t x_axis);
 int		ft_end(t_data data, void **assets);
+/* load_assets_bonus.c */
 void	*load_image(t_data data, char *path);
+void	**load_assets(t_data data);
+/* manage_window_bonus.c */
+void	win_map(t_data *data, int y_diff, int x_diff);
+int		manage_window(t_map *map);
+/* map_building_bonus.c */
+int		put_image(t_data data, void *mlx_img, size_t y_axis, size_t x_axis);
+void	put_map(t_map *map, t_data data, void **tab);
+/* map_check_bonus.c */
+char	**check_map(char **map_array, t_map *map, char *res);
+void	find_exit(char **map_array, t_data *data);
+/* map_line_check_bonus.c */
+char	*check_line(char *line, t_map *map);
+/* map_parsing_bonus.c */
+char	*ft_sep_join(char *s1, char *s2, char *sep);
+char	**getting_line(char *path, t_map *map);
+/* pates_finding_bonus.c */
+int		path_finding(t_data *data, t_map *map, char **map_array);
+/* player_bonus.c */
 void	**load_player(t_data data, void **assets);
 void	player_reaction(t_data *data, void **assets, char move);
-void	move_player(t_data *data, int y_diff, int x_diff, int texture);
-int		can_move(t_map *map, int y_diff, int x_diff, t_data *data);
-void	find_exit(char **map_array, t_data *data);
-int		path_finding(t_data *data, t_map *map, char **map_array);
-int		put_string(t_data *data);
+/* player_movement_bonus.c */
 int		ft_hook(int keycode, t_data *data);
-void	win_map(t_data *data, int y_diff, int x_diff);
-void	put_map(t_map *map, t_data data, void **tab);
+int		can_move(t_map *map, int y_diff, int x_diff, t_data *data);
+void	move_player(t_data *data, int y_diff, int x_diff, int texture);
+/* put_string_bonus.c */
+int		put_string(t_data *data);
+/* sprite_animation_bonus.c */
 void	**load_animation(t_data data, void **assets);
 void	animation(t_data data, size_t y, size_t x);
 

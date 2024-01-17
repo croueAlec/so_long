@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 16:29:08 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 16:39:14 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	win_map(t_data *data, int y_diff, int x_diff)
 	y = map->player_y - y_diff + 1;
 	x = map->player_x - x_diff + 1;
 	ft_putendl_fd(WIN_MSG, 1);
-	// animation(*data, y, x);
 	mlx_loop_end(data->mlx_ptr);
 }
 
@@ -77,8 +76,6 @@ int	manage_window(t_map *map)
 	mlx_hook(data.win_ptr, 17, 0, mlx_loop_end, data.mlx_ptr);
 	mlx_key_hook(data.win_ptr, ft_hook, &data);
 	mlx_loop(data.mlx_ptr);
-	// put_image(data, assets[DEFAULT_TEXTURE], 1, 1);
-	// sleep(5);
 	return (ft_end(data, assets), 0);
 }
 
