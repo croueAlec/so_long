@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:44:32 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/15 16:01:41 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 13:39:42 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	**load_tiles(t_data data, void **assets)
 	assets[LONE_WALL] = load_image(data, LONE_WALL_PATH);
 	if (!assets[LONE_WALL])
 		return (clear_images(data, assets, LONE_WALL), NULL);
+	assets[EXIT_OPEN] = load_image(data, EXIT_OPEN_TEXTURE_PATH);
+	if (!assets[EXIT_OPEN])
+		return (clear_images(data, assets, EXIT_OPEN), NULL);
+	assets = load_player(data, assets);
+	if (!assets)
+		return (NULL);
 	return (assets);
 }
 
@@ -117,3 +123,7 @@ void	**load_assets(t_data data)
 		return (NULL);
 	return (assets);
 }
+
+/*
+	Here we load most of our textures.
+*/
