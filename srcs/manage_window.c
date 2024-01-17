@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/16 20:26:27 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 10:55:49 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,13 +244,17 @@ void	put_string(t_data *data)
 	x = TILE_SIZE * 3;
 	y = TILE_SIZE - (TILE_SIZE / 3);
 	s1 = ft_itoa(data->steps - 1);
+	if (!s1)
+		return ;
 	s2 = ft_itoa(data->steps);
 	mlx_string_put(mlx, data->win_ptr, x / 3, y, rgb(0, 0, 0), STEPS);
 	mlx_string_put(mlx, data->win_ptr, x / 3, y, rgb(255, 255, 255), STEPS);
 	mlx_string_put(mlx, data->win_ptr, x, y, rgb(0, 0, 0), s1);
-	mlx_string_put(mlx, data->win_ptr, x, y, rgb(255, 255, 255), s2);
+	if (s2)
+		mlx_string_put(mlx, data->win_ptr, x, y, rgb(255, 255, 255), s2);
 	free(s1);
-	free(s2);
+	if (s2)
+		free(s2);
 }
 
 void	init_data(t_data *data, t_map *map)
