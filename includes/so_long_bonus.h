@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:56:44 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 14:20:46 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 16:35:54 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+#include <time.h>
 # include "../../libs/libft/libft.h"
 # include "../../libs/minilibx-linux/mlx.h"
 # include "../../includes/so_long_defines_bonus.h"
@@ -80,5 +81,7 @@ int		put_string(t_data *data);
 int		ft_hook(int keycode, t_data *data);
 void	win_map(t_data *data, int y_diff, int x_diff);
 void	put_map(t_map *map, t_data data, void **tab);
+void	**load_animation(t_data data, void **assets);
+void	animation(t_data data, size_t y, size_t x);
 
 #endif

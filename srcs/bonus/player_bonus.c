@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:46:58 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 14:22:04 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 16:07:12 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	**load_player(t_data data, void **assets)
 	assets[PLAYER_RIGHT] = load_image(data, PLAYER_RIGHT_PATH);
 	if (!assets[PLAYER_RIGHT])
 		return (clear_images(data, assets, PLAYER_RIGHT), NULL);
+	assets = load_animation(data, assets);
+	if (!assets)
+		return (NULL);
 	return (assets);
 }
 

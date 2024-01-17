@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:38 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 13:57:13 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 15:25:15 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 /* Textures */
 # define TILE_SIZE 32
-# define ASSETS 18
+# define ASSETS 27
 # define DEFAULT_TEXTURE 0
 # define PLAYER_TEXTURE 1
 # define EXIT_TEXTURE 2
@@ -53,6 +53,15 @@
 # define PLAYER_BACK 16
 # define PLAYER_LEFT 17
 # define PLAYER_RIGHT 18
+# define SPRITE_DEFAULT 19
+# define SPRITE_INIT 20
+# define SPRITE_ONE 21
+# define SPRITE_TWO 22
+# define SPRITE_THREE 23
+# define SPRITE_FOUR 24
+# define SPRITE_FIVE 25
+# define SPRITE_SIX 26
+# define SPRITE_SEVEN 27
 
 /* Texture paths */
 # define DEFAULT_TEXTURE_PATH "textures/default_texture.xpm"
@@ -74,6 +83,15 @@
 # define PLAYER_BACK_PATH "textures/player_back.xpm"
 # define PLAYER_LEFT_PATH "textures/player_left.xpm"
 # define PLAYER_RIGHT_PATH "textures/player_right.xpm"
+# define SPRITE_DEFAULT_PATH "textures/sprite_default.xpm"
+# define SPRITE_INIT_PATH "textures/sprite_init.xpm"
+# define SPRITE_ONE_PATH "textures/sprite_one.xpm"
+# define SPRITE_TWO_PATH "textures/sprite_two.xpm"
+# define SPRITE_THREE_PATH "textures/sprite_three.xpm"
+# define SPRITE_FOUR_PATH "textures/sprite_four.xpm"
+# define SPRITE_FIVE_PATH "textures/sprite_five.xpm"
+# define SPRITE_SIX_PATH "textures/sprite_six.xpm"
+# define SPRITE_SEVEN_PATH "textures/sprite_seven.xpm"
 
 /* Messages */
 # define BAD_MAP_PATH "Bad map path"

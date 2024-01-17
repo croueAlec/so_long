@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/17 14:16:27 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/17 16:04:52 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ define BONUS_SRC :=
 	player_movement_bonus.c \
 	player_bonus.c \
 	put_string_bonus.c \
-	so_long_bonus.c)
+	so_long_bonus.c \
+	sprite_animation.c)
 endef
 BONUS_SRC := $(strip $(BONUS_SRC))
 
