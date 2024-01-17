@@ -4,4 +4,5 @@ a.out
 */*.a
 */*.o
 so_long
+so_long_bonus
 test.c

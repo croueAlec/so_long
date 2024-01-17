@@ -6,7 +6,7 @@
 #    By: acroue <acroue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 11:51:52 by acroue            #+#    #+#              #
-#    Updated: 2024/01/17 13:33:32 by acroue           ###   ########.fr        #
+#    Updated: 2024/01/17 14:16:27 by acroue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,18 @@ endef
 SRC := $(strip $(SRC))
 
 define BONUS_SRC :=
-	SALUT.c
-	$(addprefix $(BONUS_DIR)/, $(addsuffix _bonus.c, SALUT))
+	$(addprefix $(BONUS_DIR)/, error_handling_bonus.c \
+	load_assets_bonus.c \
+	manage_window_bonus.c \
+	map_building_bonus.c \
+	map_check_bonus.c \
+	map_line_check_bonus.c \
+	map_parsing_bonus.c \
+	pates_finding_bonus.c \
+	player_movement_bonus.c \
+	player_bonus.c \
+	put_string_bonus.c \
+	so_long_bonus.c)
 endef
 BONUS_SRC := $(strip $(BONUS_SRC))
 
@@ -149,7 +159,7 @@ cre:
 	@make re --no-print-directory
 
 norm:
-	@norminette $(SRCS_DIR) $(INCS_DIR) | awk '/'Error'/ {print; found=1} END {if (!found) print "$(PURPLE)Norm O.K.$(DEFAULT)"}'
+	@norminette $(SRCS_DIR) $(INCS_DIR) $(BONUS_DIR) | awk '/'Error'/ {print; found=1} END {if (!found) print "$(PURPLE)Norm O.K.$(DEFAULT)"}'
 	@norminette $(LIBFT_DIR) | awk '/'Error'/ {print; found=1} END {if (!found) print "$(YELLOW)Norm libft O.K.$(DEFAULT)"}'
 
 valerie: cre
