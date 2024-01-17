@@ -6,7 +6,7 @@
 /*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:23 by acroue            #+#    #+#             */
-/*   Updated: 2024/01/17 10:55:49 by acroue           ###   ########.fr       */
+/*   Updated: 2024/01/17 11:30:49 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 #include <stdio.h>
 
-int	can_move(t_map *map, int y_diff, int x_diff)
+int	can_move(t_map *map, int y_diff, int x_diff, t_data *data)
 {
 	char	new_tile;
 
 	new_tile = map->map[map->player_y + y_diff][map->player_x + x_diff];
 	if (new_tile == SPACE || new_tile == COIN)
+		return (1);
+	if (new_tile == EXIT && data->map->coins == 0)
 		return (1);
 	return (0);
 }
@@ -53,6 +55,22 @@ char	exit_texture(t_data *data, char tile)
 	}
 }
 
+void	animate_player(t_data *data, int y_diff, int x_diff)
+{
+	void	**assets;
+	t_map	*map;
+	size_t	y;
+	size_t	x;
+
+	assets = data->assets;
+	map = data->map;
+	y = map->player_y - y_diff + 1;
+	x = map->player_x - x_diff + 1;
+	put_image(*data, assets[DEFAULT_TEXTURE], map->player_y + 1, map->player_x + 1);
+	sleep(10);
+	mlx_loop_end(data->mlx_ptr);
+}
+
 void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 {
 	void	**asset;
@@ -72,7 +90,7 @@ void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 	if (map->map[map->player_y][map->player_x] == COIN)
 		map->coins--;
 	if (map->map[map->player_y][map->player_x] == EXIT)
-		map->map[map->player_y][map->player_x] = exit_texture(data, EXIT);
+		animate_player(data, y_diff, x_diff);
 	else
 	{
 		put_image(*data, asset[texture], map->player_y + 1, map->player_x + 1);
@@ -81,6 +99,14 @@ void	move_player(t_data *data, int y_diff, int x_diff, int texture)
 	if (map->coins == 0)
 		put_image(*data, asset[EXIT_OPEN], data->exit_y + 1, data->exit_x + 1);
 }
+/*
+	If you want to make the exit texture walkable use
+		map->map[map->player_y][map->player_x] = exit_texture(data, EXIT);
+	instead of
+		animate_player(data, y_diff, x_diff);
+	and in can_move remove
+	 && data->map->coins == 0
+ */
 
 int	ft_hook(int keycode, t_data *data)
 {
